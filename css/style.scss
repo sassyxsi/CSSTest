@@ -1,0 +1,43 @@
+body {
+  background-color: gray;
+}
+/* 以下、吹き出しにかかる設定 */
+/* baloon1は本体の四角にかかる設定 */
+.balloon1 {
+    // width: 200px;
+    // height: 100px;
+    // background: white;
+    // border: 1px solid gray;
+    // border-radius: 3px;
+    // background-color: black;
+    position: relative;
+  /* 下の三角にかかる設定、位置はbaloon1のにかかる(relative)絶対値(absolute)にて設定。 */
+  &::before {
+    position: absolute;
+    /* 三角形の位置をballoon1を基準に設定 */
+    left: 121px;
+    bottom: -25px;
+    /* 三角形を表示させるためには、空でも良いのでcontentを設定しなければならない */
+    content:"";
+    /* ボーダーのみを表示させるためにコンテンツの大きさをゼロにしている */
+    width: 0;
+    height: 0;
+    border-style: solid;
+    /* border-leftを無くしてボーダーを三角形の形を整えている */
+    border-width: 15px 20px 10px 0;
+    /* border-topのみを表示させて、残りは非表示としている */
+    border-color: red transparent transparent transparent;
+  }
+  /* 上記の三角形はボーダーそのもので作っているため、枠線(ボーダー)で囲むことはできない。そのため、上記三角形と同じものを重ねて少し上へずらすことで表現している。afterはbeforeより上に重なって表示される */
+  &::after {
+    position: absolute;
+    left: 18px;
+    bottom: -23px;
+    content:"";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 16px 21px 10px 0;
+    border-color: white transparent transparent transparent;
+  }
+}
